@@ -1,0 +1,1302 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta name="description"
+    content="Vali is a responsive and free admin theme built with Bootstrap 4, SASS and PUG.js. It's fully customizable and modular.">
+  <!-- Twitter meta-->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:site" content="@pratikborsadiya">
+  <meta property="twitter:creator" content="@pratikborsadiya">
+  <!-- Open Graph Meta-->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Vali Admin">
+  <meta property="og:title" content="Vali - Free Bootstrap 4 admin theme">
+  <meta property="og:url" content="http://pratikborsadiya.in/blog/vali-admin">
+  <meta property="og:image" content="http://pratikborsadiya.in/blog/vali-admin/hero-social.png">
+  <meta property="og:description"
+    content="Vali is a responsive and free admin theme built with Bootstrap 4, SASS and PUG.js. It's fully customizable and modular.">
+  <title>Gestion des Parcellaires</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Main CSS-->
+  <link rel="stylesheet" type="text/css" href="css/main.css">
+  <link rel="stylesheet" type="text/css" href="css/main1.css">
+  <!-- Font-icon css-->
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
+
+  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+
+  <link href="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.css" rel="stylesheet">
+  <script src="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
+  <script
+    src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.min.js'></script>
+  <link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />
+  <link href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.css'
+    rel='stylesheet' />
+
+  <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"
+    content="initial-scale=1,maximum-scale=1,user-scalable=no">
+  <title>Sidebar Menu</title>
+  <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+  <link href="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css" rel="stylesheet">
+  <script src="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js"></script>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/styleMode.css">
+   
+</head>
+
+<body class="app sidebar-mini">
+  <!-- Navbar-->
+  <header class="app-header"><a class="app-header__logo" href="#">Parcellaires_App</a>
+    <!-- Sidebar toggle button--><a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"
+      style="display: none;"></a>
+    <!-- Navbar Right Menu-->
+    <ul class="app-nav">
+      <li class="app-search">
+        <input class="app-search__input" type="search" placeholder="Search" id="addressInput">
+        <button class="app-search__button" id="geocodeButton"><i class="fa fa-search"></i></button>
+      </li>
+      <div id="search_map_div"
+        style="position: absolute; z-index: 9999; background: white; margin-top: 60px; padding: 21px; ">
+
+        <ul id="addressList"></ul>
+      </div>
+      <ul class="app-address-list dropdown-menu settings-menu dropdown-menu-right" id="addressList"></ul>
+
+      <!--Notification Menu-->
+      <li class="dropdown"><a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Show notifications"><i
+            class="fa fa-bell-o fa-lg"></i></a>
+
+      </li>
+      <!-- User Menu-->
+      <li class="dropdown"><a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Open Profile Menu"><i
+            class="fa fa-user fa-lg"></i></a>
+        <ul class="dropdown-menu settings-menu dropdown-menu-right">
+
+          <li><a class="dropdown-item" href="/"><i class="fa fa-sign-out fa-lg"></i> logout</a></li>
+          <li><a class="dropdown-item" href="#" id="logout"></a></li>
+        </ul>
+      </li>
+    </ul>
+  </header>
+
+  <!-- Sidebar menu-->
+ 
+  <aside class="app-sidebar">
+    <ul class="app-menu">
+      <li class="treeview">
+        <a class="app-menu__item" href="login" data-toggle="treeview" id="page2">
+          <i class="app-menu__icon fa fa-map"></i>
+          <span class="app-menu__label">Mes cartes</span>
+          <i class="treeview-indicator fa fa-angle-right"></i>
+        </a>
+        <ul class="treeview-menu" id="cartes">
+          <div
+            style="background-color: rgba(87, 172, 215, 0.884); height: 30px; color: aliceblue; font-size:medium; text-align: center;">
+            satellite</div>
+          <img src="css/sattelite.jpg" style="width: 350px; height: 140px;  float: inherit;" id="satellite-streets-v12"
+            name="rtoggle" value="satellite" checked="checked" />
+          <div
+            style="background-color: rgba(87, 172, 215, 0.884); height: 30px; color: aliceblue; font-size:medium; text-align: center;">
+            Light</div>
+          <img src="css/light.jpg" style="width: 390px; height: 140px; float: inherit;" id="light-v11" name="rtoggle"
+            value="light" />
+          <div
+            style="background-color: rgba(87, 172, 215, 0.884); height: 30px; color: aliceblue; font-size:medium; text-align: center;">
+            Outdoors</div>
+          <img src="css/outdors.jpg" style="width: 300px; height: 140px; float: inherit;" id="outdoors-v12"
+            name="rtoggle" value="outdoors" />
+          <div
+            style="background-color: rgba(87, 172, 215, 0.884); height: 30px; color: aliceblue; font-size:medium; text-align: center;">
+            Dark</div>
+          <img src="css/dark.jpg" style="width: 350px; height: 140px; float: inherit;" id="dark-v11" name="rtoggle"
+            value="dark" />
+          <div
+            style="background-color: rgba(87, 172, 215, 0.884); height: 30px; color: aliceblue; font-size:medium; text-align: center;">
+            Streets</div>
+          <img src="css/strret.jpg" style="width: 300px; height: 140px; float: inherit;" id="streets-v12" name="rtoggle"
+            value="streets" />
+        </ul>
+      </li>
+      <li class="treeview">
+        <a class="app-menu__item" href="#" data-toggle="treeview">
+        <i class="app-menu__icon fa fa-th-list"></i><span class="app-menu__label" id="add">Ajouter</span>
+          <i class="treeview-indicator fa fa-angle-right"></i>
+        </a>
+      </li>
+      <li class="treeview">
+        <a class="app-menu__item" href="#" data-toggle="treeview" id="page2">
+          <i class="app-menu__icon fas fa-layer-group"></i>
+          <span class="app-menu__label" id="couches">Mes Couches</span>
+          <i class="treeview-indicator fa fa-angle-right"></i>
+        </a>
+        <ul class="treeview-menu" id="my_layers">
+        </ul>
+      </li>
+
+      <li class="treeview">
+        <a class="app-menu__item" href="Homepage1" data-toggle="treeview">
+          <i class="app-menu__icon fas fa-file-import "></i>
+          <span class="app-menu__label">Shapefiles</span>
+          <i class="treeview-indicator fa fa-angle-right"></i>
+        </a>
+        <ul class="treeview-menu">
+          <li><span class="treeview-item" id="rabat_hassane"><i class="icon fa fa-circle-o"></i> Rabat Hassane</span>
+          </li>
+          <li><span class="treeview-item" id="rabat_riyad"><i class="icon fa fa-circle-o"></i>Rabat Riyad </span></li>
+          <li><span class="treeview-item" id="sala_eljadida"><i class="icon fa fa-circle-o"></i>Sala ElJadida </span>
+          </li>
+          <li><span class="treeview-item" id="sale_medina"><i class="icon fa fa-circle-o"></i>Sale Medina </span></li>
+        </ul>
+      </li>
+    </ul>
+  </aside>
+
+
+  <nav>
+
+  </nav>
+  <main>
+
+
+    <script src="https://unpkg.com/@turf/turf@6/turf.min.js"></script>
+    <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.4.0/mapbox-gl-draw.js"></script>
+    <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.4.0/mapbox-gl-draw.css"
+      type="text/css">
+
+
+    <div class="modal" id="myModal"
+      style="position: absolute;z-index: 9999;left: 300px;display: none;background-color: rgba(38, 36, 36, 0.521);">
+      <div class="modal-content">
+        <h3 style="color: rgb(157, 223, 246);">Ajouter votre pacrelle a la base de donnees</h3>
+
+        <label> Nom de Propriétaire</label>
+        <input type="text" id="nameInput" name="nameInput">
+        <label> Mappe</label>
+        <input type="text" id="mappe" name="nmappe">
+        <label> Numero</label>
+        <input type="number" id="numero" name="numero">
+        <label> Type d'investissement</label>
+        <input type="text" id="type" name="type">
+        <label> Nature</label>
+        <input type="text" id="nature" name="nature">
+        <label> indice</label>
+        <input type="text" id="indice" name="indice">
+
+        <label>Surface </label>
+        <input type="text" id="surfacep" name="surface">
+
+
+        <br>
+        <button type="submit" id="save_polygon">Enregister</button>
+        <button type="submit" id="cancel_polygon" style="background-color: rgb(130, 9, 33);">Annuler</button>
+
+      </div>
+
+    </div>
+    <div class="modal1" id="myModal1"
+      style="position: absolute;z-index: 9999;left: 300px;display: none;background-color: rgba(38, 36, 36, 0.521);">
+      <div class="modal1-content">
+        <h3 style="color: rgb(157, 223, 246);">Ajouter votre couche</h3>
+
+        <label> Nom de la couche</label>
+        <input type="text" id="name_couche" name="nameCouhe">
+
+
+        <br>
+        <button type="submit" id="save_couche">Enregister</button>
+        <button type="submit" id="cancel_couche" style="background-color: rgb(130, 9, 33);">Annuler</button>
+
+      </div>
+
+    </div>
+
+
+    <div id="map"></div>
+
+    <div id="directions"></div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <script>
+      let dataGeojsondrawing
+      mapboxgl.accessToken = 'pk.eyJ1IjoiZ2VvbWZsZWkiLCJhIjoiY2pyeTVxajVwMHMycjQ0bTFkam10dGFobCJ9.9_GhakivE2CB-s-eK4HVSA';
+      const map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/satellite-v9',
+        projection: 'globe', // Display the map as a globe, since satellite-v9 defaults to Mercator
+        zoom: 1.5,
+        center: [-90, 40]
+
+      });
+      // Add zoom and rotation controls to the map.
+      map.addControl(new mapboxgl.NavigationControl(), 'top-left');
+      const layerList = document.getElementById('cartes');
+      const inputs = layerList.getElementsByTagName('img');
+
+      for (const input of inputs) {
+        input.onclick = (layer) => {
+          const layerId = layer.target.id;
+          map.setStyle('mapbox://styles/mapbox/' + layerId);
+        };
+      }
+
+
+      const draw = new MapboxDraw({
+        displayControlsDefault: false,
+        controls: {
+          point: false,
+          line_string: false,
+          polygon: false,
+          trash: true,
+          combine_features: false,
+          uncombine_features: false
+        },
+        userProperties: false
+      });
+
+
+      map.addControl(draw, 'top-left');
+      map.on('draw.delete', updateArea);
+      map.on('draw.update', updateArea);
+
+      var modal1 = document.getElementById("myModal1");
+      var addcouche = document.getElementById("add");
+      var saveCouche = document.getElementById("save_couche")
+      var recent = localStorage.getItem('userId')
+      var cancelcouche = document.getElementById("cancel_couche")
+      console.log(recent)
+      $(document).ready(function () {
+        var geocoder = new MapboxGeocoder({
+          accessToken: mapboxgl.accessToken,
+          marker: false,
+          placeholder: 'Search'
+        });
+
+        $('#addressInput').append(geocoder.onAdd(map));
+
+        var addressList = $('#addressList');
+        var searchMapDiv = $('#search_map_div');
+
+        searchMapDiv.hide(); // Hide the search_map_div initially
+
+        function geocodeAddress(searchQuery) {
+          // Perform geocoding request
+          $.ajax({
+            url: 'https://api.mapbox.com/geocoding/v5/mapbox.places/' + encodeURIComponent(searchQuery) + '.json',
+            type: 'GET',
+            data: {
+              access_token: mapboxgl.accessToken
+            },
+            success: function (response) {
+              // Handle the response data
+              var features = response.features;
+              addressList.empty(); // Clear the previous results
+
+              for (var i = 0; i < features.length; i++) {
+                var address = features[i].place_name;
+                var listItem = $('<li>').text(address);
+                listItem.click(flyToLocation.bind(null, features[i]));
+                addressList.append(listItem);
+              }
+
+              if (searchQuery.length > 0) {
+                searchMapDiv.show(); // Show the search_map_div when the searchQuery is not empty
+              } else {
+                searchMapDiv.hide(); // Hide the search_map_div when the searchQuery is empty
+              }
+            },
+            error: function (error) {
+              console.log('Geocoding error:', error);
+            }
+          });
+        }
+
+        $('#addressInput').on('input', function () {
+          var searchQuery = $(this).val();
+          geocodeAddress(searchQuery);
+        });
+
+        addressList.on('click', 'li', function () {
+          addressList.hide(); // Hide the addressList when a choice is clicked
+          searchMapDiv.hide(); // Hide the search_map_div when a choice is clicked
+        });
+
+        function flyToLocation(location) {
+          var coordinates = location.center;
+          map.flyTo({ center: coordinates, zoom: 11 });
+          var marker = new mapboxgl.Marker().setLngLat(coordinates).addTo(map);
+        }
+      });
+
+
+      function logout() {
+
+        let logbtn = document.getElementById('logout');
+        logbtn.onclick = function () {
+          let iduserlogout = recent
+          console.log(iduserlogout)
+          $.ajax({
+            url: `${window.origin}/logout`,
+            type: "POST",
+            data: iduserlogout,
+            success: function (response) {
+              console.log('success send', response);
+
+            },
+            error: function () {
+              alert("error");
+            }
+          });
+        }
+
+      }
+
+
+      logout()
+      addcouche.onclick = function () {
+        modal1.style.display = "block";
+
+        let name = document.getElementById('name_couche')
+
+        $('#save_couche').off().on('click', () => {
+          console.log('hello world');
+          let data = {
+            name_couche: $('#name_couche').val(),
+            id_user: localStorage.getItem('userId')
+          }
+          $.ajax({
+            url: `${window.origin}/saveCouche`,
+            type: "POST",
+            data: data,
+            success: function (response) {
+              console.log('success send', response);
+
+            },
+            error: function () {
+              alert("error");
+            }
+          });
+          name.value = ''
+          modal1.style.display = "none";
+
+        })
+
+        cancelcouche.onclick = function () { modal1.style.display = "none"; }
+      }
+
+
+
+
+
+
+
+
+      map.on('draw.create', function (event) {
+        let feature = event.features[0];
+        if (feature.geometry.type === 'Point') {
+          let pointsCoordinates = feature.geometry.coordinates;
+          console.log(pointsCoordinates);
+        }
+        if (feature.geometry.type === 'LineString') {
+          let lineCoordinates = feature.geometry.coordinates;
+          console.log(lineCoordinates);
+        }
+        if (feature.geometry.type === 'Polygon') {
+          console.log('my feature ::: ', feature);
+          display_Mdal_Information_Parcelles(feature)
+        }
+
+      });
+
+
+      function display_Mdal_Information_Parcelles(feature) {
+        let modal = document.getElementById("myModal");
+        let saveDataInpolygon = document.getElementById("save_polygon");
+        let cancelDatapolygon = document.getElementById("cancel_polygon");
+        let inputName = document.getElementById("nameInput");
+        let inputMappe = document.getElementById("mappe");
+        let inputNumero = document.getElementById("numero");
+        let inputType = document.getElementById("type");
+        let inputNature = document.getElementById("nature");
+        let inputIndice = document.getElementById("indice");
+
+        let inputSurface = document.getElementById("surfacep");
+        const area = turf.area(feature);
+        const rounded_area = Math.round(area * 100) / 100;
+        let surfacePolygon = rounded_area;
+        console.log(surfacePolygon)
+        $('#surfacep').val(`${surfacePolygon} Hectare`)
+        feature.properties.surface = surfacePolygon
+        inputSurface.setAttribute("value", surfacePolygon);
+        modal.style.display = "block";
+        saveDataInpolygon.onclick = function () {
+          feature.properties.name = inputName.value;
+          feature.properties.mappe = inputMappe.value;
+          feature.properties.numero = inputNumero.value;
+          feature.properties.type = inputType.value;
+          feature.properties.nature = inputNature.value;
+          feature.properties.indice = inputIndice.value;
+          draw.add(feature);
+          inputName.value = '';
+          inputMappe.value = '';
+          inputNumero.value = '';
+          inputType.value = '';
+          inputNature.value = '';
+          inputIndice.value = '';
+
+          inputSurface.value = '';
+          modal.style.display = "none";
+
+          let polygonProperties = {
+            "name": feature.properties.name,
+            "mappe": feature.properties.mappe,
+            "numero": feature.properties.numero,
+            "type": feature.properties.type,
+            "nature": feature.properties.nature,
+            "indice": feature.properties.indice,
+            "surface": feature.properties.surface
+          };
+
+          console.log(polygonProperties);
+          let datas = {
+            id_couche: idCouche,
+            coordinates: feature.geometry.coordinates,
+            properties: polygonProperties
+          };
+
+          $.ajax({
+            url: "/savePolygontwo",
+            type: "POST",
+            contentType: 'application/json',
+            data: JSON.stringify(datas),
+            success: function (res) {
+              console.log('Polygon saved successfully:', res);
+            },
+            error: function (err) {
+              console.error('Error saving polygon:', err);
+            }
+          });
+        };
+        //  End function to ad informations to Polygones
+
+        //  start cancel modal of information
+        cancelDatapolygon.onclick = function () {
+          modal.style.display = "none";
+        };
+        //  End cancel modal of information
+      }
+
+
+
+      var displaycouches = document.getElementById("couches");
+      var menuOpened = false;
+
+      displaycouches.addEventListener('click', function () {
+        if (!menuOpened) {
+          function getUserId() {
+            return localStorage.getItem("userId");
+          }
+          var data = getUserId();
+          console.log('DATA:', data);
+          $.ajax({
+            url: `${window.origin}/couchesdata`,
+            type: "POST",
+            data: { data: data }, // Pass the data as an object with the key "data"
+            success: function (response) {
+              console.log('Success:', response);
+              $('#my_layers').empty();
+              response.data.forEach(element => {
+                console.log(element);
+                createTableCouche(element)
+
+              });
+              // Open the menu only if the server request was successful
+            },
+            error: function () {
+              alert("Error");
+            }
+          });
+        } else {
+          // Close the menu
+
+        }
+      });
+
+      function createTableCouche(element) {
+        $('#my_layers').append(`
+              <li class="treeview-item optionMesCouches" idCouche="${element.id_couche}" id="divcouche_${element.id_couche}">
+                ${element.name_couche}
+                <div class="dropdownMesCouches" style="width: 100%;">
+                  <button   class="dropbtnMesCouches" page="${element.id_couche}" style="float: right;">..</button>
+                  <div id="myDropdownMesCouches_${element.id_couche}" class="dropdownMesCouches-content">
+                    <a class="optionMesCouches" style='cursor:pointer' option="renommation" idCouche="${element.id_couche}">Renommer</a>
+                    <a class="optionMesCouches" style='cursor:pointer' option="dessin" idCouche="${element.id_couche}">Dessiner</a>
+                    <a class="optionMesCouches" style='cursor:pointer' option="suppression" idCouche="${element.id_couche}">Supprimer</a>
+                    <a class="optionMesCouches" style='cursor:pointer' option="afficher" idCouche="${element.id_couche}">Afficher</a>
+                  </div>
+                </div>
+              </li>
+            `);
+
+        functionOptionMap()
+
+      }
+
+      // myDropdownMesCouches_${element.id_couche}
+
+      const DispalyCouchesData = () => {
+        function getUserId() {
+          return localStorage.getItem("userId");
+        }
+        var data = getUserId();
+        console.log('DATA:', data);
+        $.ajax({
+          url: `${window.origin}/couchesdata`,
+          type: "POST",
+          data: { data: data }, // Pass the data as an object with the key "data"
+          success: function (response) {
+            console.log('Success:', response);
+            $('#my_layers').empty();
+            response.data.forEach(element => {
+              console.log(element);
+              createTableCouche(element)
+            })
+          }
+        })
+      }
+
+
+      const updateCouchesData = () => {
+        function getUserId() {
+          return localStorage.getItem("userId");
+        }
+        var data = getUserId();
+        console.log('DATA:', data);
+        $.ajax({
+          url: `${window.origin}/updatecouchedata`,
+          type: "POST",
+          data: { data: data }, // Pass the data as an object with the key "data"
+          success: function (response) {
+            console.log('Success:', response);
+            $('#my_layers').empty();
+            response.data.forEach(element => {
+              console.log(element);
+              createTableCouche(element)
+            })
+          }
+        })
+      }
+
+      let idCouche
+      let natureOperation
+      const functionOptionMap = () => {
+        $('.dropbtnMesCouches').off().on('click', (event) => {
+          let id_btn_detailCouche = $(event.currentTarget).attr('page')
+          console.log(id_btn_detailCouche);
+          document.getElementById(`myDropdownMesCouches_${id_btn_detailCouche}`).classList.toggle("show");
+        })
+
+        $('.optionMesCouches').off().on('click', (event) => {
+          natureOperation = $(event.currentTarget).attr('option')
+          idCouche = $(event.currentTarget).attr('idCouche');
+          console.log('id couche ::: ', idCouche);
+          console.log("natureOperation :: ", natureOperation);
+          switch (natureOperation) {
+            case 'renommation':
+              console.log('hello rennomation');
+              console.log("natureOperation111 :: ", natureOperation);
+              renommerCouche(idCouche)
+
+              break;
+            case 'dessin':
+              draw.changeMode('draw_polygon')
+
+              break;
+
+            case 'suppression':
+              suppressionCouche(idCouche)
+
+              break;
+            case 'afficher':
+              displaypolygonsecouches(idCouche)
+
+              break;
+            default:
+              break;
+          }
+        })
+      }
+
+      function suppressionCouche(idCouche) {
+        const swalWithBootstrapButtons = Swal.mixin({
+          customClass: {
+            confirmButton: 'btn btn-success',
+            cancelButton: 'btn btn-danger'
+          },
+          buttonsStyling: false
+        });
+
+        swalWithBootstrapButtons.fire({
+          title: 'Êtes-vous sûr ?',
+          text: "Vous ne pourrez pas revenir en arrière!",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonText: 'Oui, supprimez!',
+          cancelButtonText: 'Non, annulez!',
+          reverseButtons: true
+        }).then((result) => {
+          if (result.isConfirmed) {
+            swalWithBootstrapButtons.fire(
+              'Supprimée!',
+              'Votre couche a été supprimée',
+              'Succès'
+            );
+
+            let iduser = recent;
+            let data = {
+
+              id_couche: idCouche,
+              id_user: iduser
+            };
+
+            console.log("data delete :: ", data);
+
+            $.ajax({
+              url: `${window.origin}/deletecouches`,
+              type: "POST",
+              data: data,
+              success: function (response) {
+                console.log('Success:', response);
+                DispalyCouchesData();
+                closeMenu();
+              },
+              error: function () {
+                Swal.fire({
+                  title: 'Non supprimée',
+                  icon: 'error'
+                });
+              }
+            });
+          } else if (result.dismiss === Swal.DismissReason.cancel) {
+            swalWithBootstrapButtons.fire(
+              'Annulé',
+              ' :)',
+              'error'
+            );
+          }
+        });
+      }
+
+
+
+      //Renommer la couche 
+
+      function renommerCouche(idCouche) {
+        Swal.fire({
+          title: 'Ajouter une nouvelle valeur',
+          input: 'text',
+          inputAttributes: {
+            autocapitalize: 'off'
+          },
+          showCancelButton: 'Annuler',
+          confirmButtonText: 'valider',
+          showLoaderOnConfirm: true,
+          preConfirm: (newvalue) => {
+            let iduser = recent;
+            let data = {
+              id_couche: idCouche,
+              newname: newvalue
+            };
+
+            return $.ajax({
+              url: `${window.origin}/updatecouchedata`,
+              type: "POST",
+              data: data,
+              success: function (response) {
+                console.log('Success updated:', response);
+                Swal.fire({
+                  title: 'Modifiée',
+                  icon: 'success'
+                });
+                updateCouchesData()
+                closeMenu();
+              },
+              error: function () {
+                Swal.fire({
+                  title: 'Non Modifiée',
+                  icon: 'error'
+                });
+                closeMenu();
+              }
+
+            });
+
+          },
+          allowOutsideClick: () => !Swal.isLoading()
+
+
+        });
+
+      }
+
+
+
+      // fermer le menu 
+      function closeMenu() {
+        var dropdowns = document.getElementsByClassName("dropbtnMesCouches");
+        for (var i = 0; i < dropdowns.length; i++) {
+          dropdowns[i].classList.remove("show");
+        }
+      }
+      // Imorter les Polygones dessinees
+      function displaypolygonsecouches(idCouche) {
+        if (map.getSource('parcels')) {
+          console.log('source already exists');
+          map.removeLayer('layer');
+          map.removeSource('parcels');
+        }
+
+        let id_couche = idCouche;
+
+        $.ajax({
+          url: `${window.origin}/GeoJsondata?id_couche=${id_couche}`,
+          type: "GET",
+          contentType: 'application/json',
+          success: function (data) {
+            console.log(data);
+            var geojsonData = {
+              type: "FeatureCollection",
+              features: data.data
+            };
+            if (!map.getSource('parcels')) {
+              map.addSource('parcels', {
+                type: 'geojson',
+                data: geojsonData
+              });
+              map.addLayer({
+                id: 'layer',
+                type: 'fill',
+                source: 'parcels',
+                paint: {
+                  "fill-color": "#db6e8f",
+                  'fill-opacity': 0.8,
+                  'fill-outline-color': 'rgba(60, 100, 20, 100)'
+                }
+              });
+            }
+          },
+          error: function () {
+            alert('Error');
+          }
+        });
+
+        map.on('click', 'layer', function (e) {
+          new mapboxgl.Popup()
+            .setLngLat(e.lngLat)
+            .setHTML(e.features[0].properties.name)
+            .addTo(map);
+        });
+      }
+
+      displaypolygonsecouches(idCouche);
+
+
+      //Importer les couchesde RabatHassane
+      var displayGeojsonDataRabat = document.getElementById("rabat_hassane");
+
+      displayGeojsonDataRabat.onclick = function () {
+        if (map.getSource('maine')) {
+          map.removeLayer('maine');
+          map.removeSource('maine');
+        }
+        $.ajax({
+          url: `${window.origin}/GeoJsondataRabatHassane`,
+          type: "GET",
+          contentType: 'application/json',
+          success: function (data) {
+            //console.log('all datas :..........test', data)
+            var geojsonDatarabat = {
+              type: "FeatureCollection",
+              features: data.data
+            };
+            var extent = turf.bbox(geojsonDatarabat);
+            //console.log(extent)
+            map.fitBounds(extent, { padding: 20 });
+
+            map.addSource('maine', {
+              'type': 'geojson',
+              'data': geojsonDatarabat
+            });
+
+            // Add a new layer to visualize the polygon.
+            map.addLayer({
+              'id': 'maine',
+              'type': 'fill',
+              'source': 'maine', // reference the data source
+              'layout': {},
+              'paint': {
+                'fill-color': '#F90981 ', // blue color fill
+                'fill-opacity': 0.5
+              }
+            });
+            // Add a black outline around the polygon.
+            map.addLayer({
+              'id': 'outline',
+              'type': 'line',
+              'source': 'maine',
+              'layout': {},
+              'paint': {
+                'line-color': '#000',
+                'line-width': 3
+              }
+            });
+
+            map.on('click', 'maine', function (e) {
+              // Create a table element with a class for styling
+              const table = document.createElement('table');
+              table.classList.add('popup-table');
+
+              // Add a row for each data point
+              ['mappe', 'nature', 'num', 'indice', 'type'].forEach(key => {
+                const row = table.insertRow();
+                const labelCell = row.insertCell();
+                const valueCell = row.insertCell();
+
+                labelCell.textContent = `${key.charAt(0).toUpperCase()}${key.slice(1)}:`;
+                valueCell.textContent = e.features[0].properties[key];
+              });
+
+              // Create a popup and set the table as its content
+              new mapboxgl.Popup()
+                .setLngLat(e.lngLat)
+                .setDOMContent(table)
+                .addTo(map);
+              var sourceId = "maine";
+              var featureId = e.features[0].properties.id;
+
+              var features = map.querySourceFeatures(sourceId, {
+                filter: ["==", "id", featureId]
+              });
+
+              if (features.length > 0) {
+                var geometry = features[0].geometry;
+                console.log('safaaaaae')
+                console.log(geometry)
+                var extent = turf.bbox(geometry);
+                map.fitBounds(extent, { padding: 5 });
+              } else {
+                console.error("Feature with ID " + featureId + " not found.");
+              }
+
+            });
+
+          },
+          error: function () {
+            alert('Error');
+          }
+
+        });
+
+      };
+      //Importer les couchesde RabatRiyad
+
+      var displayGeojsonDataRabatr = document.getElementById("rabat_riyad");
+      displayGeojsonDataRabatr.onclick = function () {
+        if (map.getSource('mainee')) {
+          map.removeLayer('mainee');
+          map.removeSource('mainee');
+        }
+        $.ajax({
+          url: `${window.origin}/GeoJsondataRabatRiyad`,
+          type: "GET",
+          contentType: 'application/json',
+          success: function (data) {
+            //console.log('all datas :..........test', data)
+            var geojsonDatarabatR = {
+              type: "FeatureCollection",
+              features: data.data
+            };
+            var extent = turf.bbox(geojsonDatarabatR);
+            //console.log(extent)
+            map.fitBounds(extent, { padding: 20 });
+
+            map.addSource('mainee', {
+              'type': 'geojson',
+              'data': geojsonDatarabatR
+            });
+
+            // Add a new layer to visualize the polygon.
+            map.addLayer({
+              'id': 'mainee',
+              'type': 'fill',
+              'source': 'mainee', // reference the data source
+              'layout': {},
+              'paint': {
+                'fill-color': '#1FF0BE ', // blue color fill
+                'fill-opacity': 0.5
+              }
+            });
+            // Add a black outline around the polygon.
+            map.addLayer({
+              'id': 'outlinee',
+              'type': 'line',
+              'source': 'mainee',
+              'layout': {},
+              'paint': {
+                'line-color': '#000',
+                'line-width': 3
+              }
+            });
+            map.on('click', 'maine', function (e) {
+              // Create a table element with a class for styling
+              const table = document.createElement('table');
+              table.classList.add('popup-table');
+
+              // Add a row for each data point
+              ['mappe', 'nature', 'num', 'indice', 'type'].forEach(key => {
+                const row = table.insertRow();
+                const labelCell = row.insertCell();
+                const valueCell = row.insertCell();
+
+                labelCell.textContent = `${key.charAt(0).toUpperCase()}${key.slice(1)}:`;
+                valueCell.textContent = e.features[0].properties[key];
+              });
+
+              // Create a popup and set the table as its content
+              new mapboxgl.Popup()
+                .setLngLat(e.lngLat)
+                .setDOMContent(table)
+                .addTo(map);
+              var sourceId = "mainee";
+              var featureId = e.features[0].properties.id;
+
+              var features = map.querySourceFeatures(sourceId, {
+                filter: ["==", "id", featureId]
+              });
+
+              if (features.length > 0) {
+                var geometry = features[0].geometry;
+                console.log('safaaaaae')
+                console.log(geometry)
+                var extent = turf.bbox(geometry);
+                map.fitBounds(extent, { padding: 20 });
+              } else {
+                console.error("Feature with ID " + featureId + " not found.");
+              }
+
+            });
+
+          },
+          error: function () {
+            alert('Error');
+          }
+
+        });
+      };
+      //Importer les couchesde SalaEljadida
+      var displayGeojsonDataRabats = document.getElementById("sala_eljadida");
+      displayGeojsonDataRabats.onclick = function () {
+        if (map.getSource('maine')) {
+          map.removeLayer('maine');
+          map.removeSource('maine');
+        }
+        $.ajax({
+          url: `${window.origin}/GeoJsondataSalaEljadida`,
+          type: "GET",
+          contentType: 'application/json',
+          success: function (data) {
+            //console.log('all datas :..........test', data)
+            var geojsonDatarabatS = {
+              type: "FeatureCollection",
+              features: data.data
+            };
+            console.log('DDDAAAATTTAAAAA::::::::', geojsonDatarabatS)
+            var extent = turf.bbox(geojsonDatarabatS);
+            //console.log(extent)
+            map.fitBounds(extent, { padding: 40 });
+
+            map.addSource('maine', {
+              'type': 'geojson',
+              'data': geojsonDatarabatS
+            });
+
+            // Add a new layer to visualize the polygon.
+            map.addLayer({
+              'id': 'maine',
+              'type': 'fill',
+              'source': 'maine', // reference the data source
+              'layout': {},
+              'paint': {
+                'fill-color': '#B61394 ', // blue color fill
+                'fill-opacity': 0.5
+              }
+            });
+            // Add a black outline around the polygon.
+            map.addLayer({
+              'id': 'outline',
+              'type': 'line',
+              'source': 'maine',
+              'layout': {},
+              'paint': {
+                'line-color': '#000',
+                'line-width': 3
+              }
+            });
+            map.on('click', 'maine', function (e) {
+              // Create a table element with a class for styling
+              const table = document.createElement('table');
+              table.classList.add('popup-table');
+
+              // Add a row for each data point
+              ['mappe', 'nature', 'num', 'indice', 'type'].forEach(key => {
+                const row = table.insertRow();
+                const labelCell = row.insertCell();
+                const valueCell = row.insertCell();
+
+                labelCell.textContent = `${key.charAt(0).toUpperCase()}${key.slice(1)}:`;
+                valueCell.textContent = e.features[0].properties[key];
+              });
+
+              // Create a popup and set the table as its content
+              new mapboxgl.Popup()
+                .setLngLat(e.lngLat)
+                .setDOMContent(table)
+                .addTo(map);
+
+
+
+
+              var sourceId = "maine";
+              var featureId = e.features[0].properties.id;
+
+              var features = map.querySourceFeatures(sourceId, {
+                filter: ["==", "id", featureId]
+              });
+
+
+              var geometry = features[0].geometry;
+              console.log(geometry)
+              var extent = turf.bbox(geometry);
+              map.fitBounds(extent, { padding: 10 });
+
+
+            });
+
+          },
+          error: function () {
+            console.log('error');
+          }
+
+        });
+      };
+
+      //importer les couches SaleMedina
+      var displayGeojsonDataRabat = document.getElementById("sale_medina");
+      displayGeojsonDataRabat.onclick = function () {
+        if (map.getSource('maine')) {
+          map.removeLayer('maine');
+          map.removeSource('maine');
+        }
+        $.ajax({
+          url: `${window.origin}/GeoJsondataSaleMadina`,
+          type: "GET",
+          contentType: 'application/json',
+          success: function (data) {
+            //console.log('all datas :..........test', data)
+            var geojsonDatarabat = {
+              type: "FeatureCollection",
+              features: data.data
+            };
+            var extent = turf.bbox(geojsonDatarabat);
+            //console.log(extent)
+            map.fitBounds(extent, { padding: 20 });
+
+            map.addSource('maine', {
+              'type': 'geojson',
+              'data': geojsonDatarabat
+            });
+
+            // Add a new layer to visualize the polygon.
+            map.addLayer({
+              'id': 'maine',
+              'type': 'fill',
+              'source': 'maine', // reference the data source
+              'layout': {},
+              'paint': {
+                'fill-color': '#F1F10D', // blue color fill
+                'fill-opacity': 0.5
+              }
+            });
+            // Add a black outline around the polygon.
+            map.addLayer({
+              'id': 'outline',
+              'type': 'line',
+              'source': 'maine',
+              'layout': {},
+              'paint': {
+                'line-color': '#000',
+                'line-width': 3
+              }
+            });
+
+            map.on('click', 'maine', function (e) {
+              // Create a table element with a class for styling
+              const table = document.createElement('table');
+              table.classList.add('popup-table');
+
+              // Add a row for each data point
+              ['mappe', 'nature', 'num', 'indice', 'type'].forEach(key => {
+                const row = table.insertRow();
+                const labelCell = row.insertCell();
+                const valueCell = row.insertCell();
+
+                labelCell.textContent = `${key.charAt(0).toUpperCase()}${key.slice(1)}:`;
+                valueCell.textContent = e.features[0].properties[key];
+              });
+
+              // Create a popup and set the table as its content
+              new mapboxgl.Popup()
+                .setLngLat(e.lngLat)
+                .setDOMContent(table)
+                .addTo(map);
+              var sourceId = "maine";
+              var featureId = e.features[0].properties.id;
+
+              var features = map.querySourceFeatures(sourceId, {
+                filter: ["==", "id", featureId]
+              });
+
+              if (features.length > 0) {
+                var geometry = features[0].geometry;
+                console.log('safaaaaae')
+                console.log(geometry)
+                var extent = turf.bbox(geometry);
+                map.fitBounds(extent, { padding: 5 });
+              } else {
+                console.error("Feature with ID " + featureId + " not found.");
+              }
+
+            });
+
+          },
+          error: function () {
+            alert('Error');
+          }
+
+        });
+      };
+
+      // modifier la geiometrie
+      function updateArea(e) {
+        dataGeojsondrawing = draw.getAll();
+        const answer = document.getElementById('directions');
+        if (dataGeojsondrawing.features.length > 0) {
+          const area = turf.area(dataGeojsondrawing);
+          console.log(area)
+          // Restrict the area to 2 decimal points.
+          const rounded_area = Math.round(area * 100) / 100;
+          answer.innerHTML = `<p><strong>${rounded_area}</strong></p><p>square meters</p>`;
+        } else {
+          answer.innerHTML = '';
+          if (e.type !== 'draw.delete')
+            alert('Click the map to draw a polygon.');
+        }
+      }
+
+
+
+      // Add the draw tool to the map.
+      map.on('style.load', () => {
+        map.setFog({}); // Set the default atmosphere style
+      });
+
+
+
+      // At low zooms, complete a revolution every two minutes.
+      const secondsPerRevolution = 120;
+      // Above zoom level 5, do not rotate.
+      const maxSpinZoom = 1;
+      // Rotate at intermediate speeds between zoom levels 3 and 5.
+      const slowSpinZoom = 3;
+
+      let userInteracting = false;
+      let spinEnabled = true;
+
+      function spinGlobe() {
+        const zoom = map.getZoom();
+        if (spinEnabled && !userInteracting && zoom < maxSpinZoom) {
+          let distancePerSecond = 360 / secondsPerRevolution;
+          if (zoom > slowSpinZoom) {
+            // Slow spinning at higher zooms
+            const zoomDif =
+              (maxSpinZoom - zoom) / (maxSpinZoom - slowSpinZoom);
+            distancePerSecond *= zoomDif;
+          }
+          const center = map.getCenter();
+          center.lng -= distancePerSecond;
+          // Smoothly animate the map over one second.
+          // When this animation is complete, it calls a 'moveend' event.
+          map.easeTo({ center, duration: 1000, easing: (n) => n });
+        }
+      }
+
+      // Pause spinning on interaction
+      map.on('mousedown', () => {
+        userInteracting = true;
+      });
+
+      // Restart spinning the globe when interaction is complete
+      map.on('mouseup', () => {
+        userInteracting = false;
+        spinGlobe();
+      });
+
+      // These events account for cases where the mouse has moved
+      // off the map, so 'mouseup' will not be fired.
+      map.on('dragend', () => {
+        userInteracting = false;
+        spinGlobe();
+      });
+      map.on('pitchend', () => {
+        userInteracting = false;
+        spinGlobe();
+      });
+      map.on('rotateend', () => {
+        userInteracting = false;
+        spinGlobe();
+      });
+
+      // When animation is complete, start spinning if there is no ongoing interaction
+      map.on('moveend', () => {
+        spinGlobe();
+      });
+
+
+      spinGlobe();
+
+    </script>
+
+  </main>
+
+  <script src="js/app.js"></script>
+  <!-- Essential javascripts for application to work-->
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/main.js"></script>
+  <!-- The javascript plugin to display page loading on top-->
+  <script src="js/plugins/pace.min.js"></script>
+  <!-- Page specific javascripts-->
+  <script type="text/javascript" src="js/plugins/chart.js"></script>
+
+
+</body>
+
+</html>

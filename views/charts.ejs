@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta name="description"
+    content="Vali is a responsive and free admin theme built with Bootstrap 4, SASS and PUG.js. It's fully customizable and modular.">
+  <!-- Twitter meta-->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:site" content="@pratikborsadiya">
+  <meta property="twitter:creator" content="@pratikborsadiya">
+  <!-- Open Graph Meta-->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Vali Admin">
+  <meta property="og:title" content="Vali - Free Bootstrap 4 admin theme">
+  <meta property="og:url" content="http://pratikborsadiya.in/blog/vali-admin">
+  <meta property="og:image" content="http://pratikborsadiya.in/blog/vali-admin/hero-social.png">
+  <meta property="og:description"
+    content="Vali is a responsive and free admin theme built with Bootstrap 4, SASS and PUG.js. It's fully customizable and modular.">
+  <title>GeoFly</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Main CSS-->
+  <link rel="stylesheet" type="text/css" href="css/main.css">
+  <link rel="stylesheet" type="text/css" href="css/main1.css">
+  <!-- Font-icon css-->
+  <link rel="stylesheet" type="text/css"
+    href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <meta charset="utf-8">
+
+  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+  <link href="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.css" rel="stylesheet">
+  <script src="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
+<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.min.js'></script>
+<link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />
+<link href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.css' rel='stylesheet' />
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"
+  content="initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>Sidebar Menu</title>
+<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+<link href="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css" rel="stylesheet">
+<script src="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js"></script>
+<link rel="stylesheet" href="css/style.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+
+
+
+
+</head>
+
+<body class="app sidebar-mini">
+  <!-- Navbar-->
+  <header class="app-header"><a class="app-header__logo" href="index.html">geofly</a>
+    <!-- Sidebar toggle button--><a class="app-sidebar__toggle" href="#" data-toggle="sidebar"
+      aria-label="Hide Sidebar"></a>
+    <!-- Navbar Right Menu-->
+   
+  </header>
+
+  <!-- Sidebar menu-->
+  <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
+  <aside class="app-sidebar">
+ 
+      <div>
+        <p class="app-sidebar__user-name">John Doe</p>
+        <p class="app-sidebar__user-designation"></p>
+      </div>
+    </div>
+    <ul class="app-menu">
+      <li><a class="app-menu__item active" href="Homepage1"><i class="app-menu__icon fa fa-dashboard"></i><span
+            class="app-menu__label">Dashboard</span></a></li>
+
+      <li><a class="app-menu__item" href="charts"><i class="app-menu__icon fa fa-pie-chart"></i><span
+            class="app-menu__label">Charts</span></a></li>
+
+
+  </aside>
+    <nav>
+
+    </nav>
+    <main>
+
+
+      <style>
+        body {
+          margin: 0;
+          padding: 0;
+
+        }
+
+        #map {
+          position: absolute;
+          top: 50px;
+          bottom: 0;
+          width: 100%;
+        }
+      </style>
+
+      </head>
+
+ 
+        <style>
+          #btn-spin {
+            font: bold 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+            background-color: #10c065;
+            color: #fff;
+            position: absolute;
+            top: 20px;
+            left: 35%;
+            z-index: 1;
+            border: none;
+            width: 200px;
+            margin-left: -100px;
+            display: block;
+            cursor: pointer;
+            padding: 10px 20px;
+            border-radius: 3px;
+          }
+
+          #btn-spin:hover {
+            background-color: #43f160;
+          }
+
+          .calculation-box {
+
+            position: absolute;
+            bottom: 20px;
+            left: 10px;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 15px;
+            text-align: center;
+          }
+
+          p {
+            font-family: 'Open Sans';
+            margin: 0;
+            font-size: 13px;
+          }
+        </style>
+        <style>
+          #menu {
+
+            position: absolute;
+            top: 54px;
+            right: 16px;
+            font-size: 18px;
+            background: #efefef;
+            padding: 10px;
+            font-family: 'Open Sans', sans-serif;
+          }
+
+          .modal-content {
+            background: transparent;
+          }
+
+          .modal {
+
+            margin: auto auto;
+            padding: 40px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px #000;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            width: 700px;
+            height: 1000px;
+          }
+
+          .modal input {
+
+            padding: 10px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #f2f2f2;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+          }
+
+          .modal label {
+            display: block;
+            margin-bottom: 10px;
+            color: #fff;
+          }
+
+
+
+          .modal button {
+            padding: 10px 20px 10px 10px;
+            margin-bottom: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: #fff;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+          }
+
+          .popup-table {
+            font-size: 14px;
+            border-collapse: collapse;
+            width: 100px;
+          }
+
+          .popup-table th {
+            text-align: left;
+            padding: 4px;
+          }
+
+          .popup-table td {
+            padding: 4px;
+            border-top: 1px solid #ccc;
+          }
+
+          .popup-table td:first-child {
+            width: 100px;
+            font-weight: bold;
+          }
+
+          #menu {
+
+            position: absolute;
+            top: 54px;
+            right: 16px;
+            font-size: 18px;
+            background: #efefef;
+            padding: 10px;
+            font-family: 'Open Sans', sans-serif;
+          }
+
+          .modal1-content {
+            background: transparent;
+          }
+
+          .modal1 {
+
+            margin: auto auto;
+            padding: 40px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px #000;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            width: 500px;
+            height: 300px;
+          }
+
+          .modal1 input {
+
+            padding: 10px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #f2f2f2;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+          }
+
+          .modal1 label {
+            display: block;
+            margin-bottom: 10px;
+            color: #fff;
+          }
+
+
+
+          .modal1 button {
+            padding: 10px 20px 10px 10px;
+            margin-bottom: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: #fff;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+          }
+
+
+
+          /* start drop Down Mes couches */
+          .dropbtnMesCouches {
+            background-color: #2a383e;
+            color: white;
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+          }
+
+          .dropbtnMesCouches:hover,
+          .dropbtnMesCouches:focus {
+            background-color: #2980B9;
+          }
+
+          .dropdownMesCouches {
+            position: relative;
+            display: inline-block;
+          }
+
+          .dropdownMesCouches-content {
+            display: none;
+            /* position: absolute; */
+            background-color: #797979;
+            min-width: 160px;
+            overflow: auto;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 9999;
+            margin-left: 239px;
+            position: fixed;
+          }
+
+          .dropdownMesCouches-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+          }
+
+          .dropdownMesCouches a:hover {
+            background-color: #ddd;
+          }
+
+          .show {
+            display: block;
+          }
+          
+
+          /* start drop Down Mes couches */
+        </style>
+
+        <script src="https://unpkg.com/@turf/turf@6/turf.min.js"></script>
+        <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.4.0/mapbox-gl-draw.js"></script>
+        <link rel="stylesheet"
+          href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.4.0/mapbox-gl-draw.css" type="text/css">
+
+
+        <div class="modal" id="myModal"
+          style="position: absolute;z-index: 9999;left: 300px;display: none;background-color: rgba(38, 36, 36, 0.521);">
+          <div class="modal-content">
+            <h3 style="color: rgb(157, 223, 246);">Ajouter votre pacrelle a la base de donnees</h3>
+
+            <label> Nom de Propriétaire</label>
+            <input type="text" id="nameInput" name="nameInput">
+            <label> Mappe</label>
+            <input type="text" id="mappe" name="nmappe">
+            <label> Numero</label>
+            <input type="number" id="numero" name="numero">
+            <label> Type d'agriculture</label>
+            <input type="text" id="type" name="type">
+            <label> Nature</label>
+            <input type="text" id="nature" name="nature">
+            <label> indice</label>
+            <input type="text" id="indice" name="indice">
+            <label>complement</label>
+            <input type="text" id="complement" name="complement">
+            <label>Surface </label>
+            <input type="text" id="surfacep" name="surface">
+
+
+            <br>
+            <button type="submit" id="save_polygon">Save</button>
+            <button type="submit" id="cancel_polygon" style="background-color: rgb(130, 9, 33);">Cancel</button>
+
+          </div>
+
+        </div>
+        <div class="modal1" id="myModal1"
+          style="position: absolute;z-index: 9999;left: 300px;display: none;background-color: rgba(38, 36, 36, 0.521);">
+          <div class="modal1-content">
+            <h3 style="color: rgb(157, 223, 246);">Ajouter votre couche</h3>
+
+            <label> Nom de la couche</label>
+            <input type="text" id="name_couche" name="nameCouhe">
+
+
+            <br>
+            <button type="submit" id="save_couche">Save</button>
+            <button type="submit" id="cancel_couche" style="background-color: rgb(130, 9, 33);">Cancel</button>
+
+          </div>
+
+        </div>
+        <main >
+          <div class="app-title">
+
+        <div id="map">
+          
+        </div>
+       
+            <div>
+              <h1><i class="fa fa-pie-chart"></i> Charts</h1>
+              <p>Various type of charts for your project</p>
+            </div>
+            <ul class="app-breadcrumb breadcrumb">
+              <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+              <li class="breadcrumb-item"><a href="#">charts</a></li>
+            </ul>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="tile">
+                <h3 class="tile-title">Line Chart</h3>
+                <div class="embed-responsive embed-responsive-16by9">
+                  <canvas class="embed-responsive-item" id="lineChartDemo"></canvas>
+                </div>
+              </div>
+            </div>
+            
+            <div class="col-md-6">
+              <div class="tile">
+                <h3 class="tile-title">Bar Chart</h3>
+                <div class="embed-responsive embed-responsive-16by9">
+                  <canvas class="embed-responsive-item" id="barChartDemo"></canvas>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="tile">
+                <h3 class="tile-title">Pie Chart</h3>
+                <div class="embed-responsive embed-responsive-16by9">
+                  <canvas class="embed-responsive-item" id="pieChartDemo"></canvas>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="tile">
+                <h3 class="tile-title">doughnut Chart</h3>
+                <div class="embed-responsive embed-responsive-16by9">
+                  <canvas class="embed-responsive-item" id="doughnutChartDemo"></canvas>
+                </div>
+              </div>
+            </div>
+
+             
+            
+          </div>
+        </main>
+        <!-- Essential javascripts for application to work-->
+        <script src="js/jquery-3.3.1.min.js"></script>
+        <script src="js/popper.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/main.js"></script>
+        <!-- The javascript plugin to display page loading on top-->
+        <script src="js/plugins/pace.min.js"></script>
+        <!-- Page specific javascripts-->
+        <script type="text/javascript" src="js/plugins/chart.js"></script>
+        <script type="text/javascript">
+   
+   fetch('/data')
+  .then(response => response.json())
+  .then(data => {
+    var labels = data.map(item => item.indice);
+    console.log(labels);
+    var values = data.map(item => item.nature);
+    console.log(values);
+
+    console.log('values:::', values);
+    var chartData = {
+      labels: labels,
+      datasets: [
+        {
+          label: "My First dataset",
+          backgroundColor: "rgba(220,220,220,0.2)",
+          borderColor: "rgba(220,220,220,1)",
+          pointBackgroundColor: "rgba(220,220,220,1)",
+          pointBorderColor: "#fff",
+          pointHoverBackgroundColor: "red",
+          pointHoverBorderColor: "rgba(220,220,220,1)",
+          data: values,
+        }
+      ]
+    };
+
+    var pieChartData = labels.map((label, index) => ({
+      value: values[index],
+      backgroundColor: getRandomColor(),
+      hoverBackgroundColor: getRandomColor(),
+      label: label
+    }));
+    
+
+  
+    var ctxl = $("#lineChartDemo").get(0).getContext("2d");
+      var lineChart = new Chart(ctxl).Line(chartData);
+
+    var ctxb = $("#barChartDemo").get(0).getContext("2d");
+      var barChart = new Chart(ctxb).Bar(chartData);
+
+      var pieChartData = labels.map((label, index) => ({
+  value: values[index],
+  backgroundColor: getRandomColor(),
+  hoverBackgroundColor: getRandomColor(),
+  label: label
+}));
+
+var pieChartCtx = document.getElementById("pieChartDemo").getContext("2d");
+var pieChart = new Chart(pieChartCtx, {
+  type: 'pie',
+  data: {
+    datasets: [{
+      data: values,
+      backgroundColor: pieChartData.map(item => item.backgroundColor),
+      hoverBackgroundColor: pieChartData.map(item => item.hoverBackgroundColor),
+    }],
+    labels: labels,
+  },
+});
+
+
+    var doughnutChartCtx = document.getElementById("doughnutChartDemo").getContext("2d");
+    var doughnutChart = new Chart(doughnutChartCtx, {
+      type: 'doughnut',
+      data: {
+        datasets: [{
+          data: values,
+          backgroundColor: pieChartData.map(item => item.backgroundColor),
+          hoverBackgroundColor: pieChartData.map(item => item.hoverBackgroundColor),
+        }],
+        labels: labels,
+      },
+    });
+  });
+
+function getRandomColor() {
+  var letters = "0123456789ABCDEF";
+  var color = "#";
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
+      </script>
+        <!-- Google analytics script-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    
+    </main>
+
+    <script src="js/app.js"></script>
+ 
+
+  <!-- Essential javascripts for application to work-->
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/main.js"></script>
+  <!-- The javascript plugin to display page loading on top-->
+  <script src="js/plugins/pace.min.js"></script>
+  <!-- Page specific javascripts-->
+  <script type="text/javascript" src="js/plugins/chart.js"></script>
+  
+
+</body>
+
+</html>

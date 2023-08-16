@@ -1,0 +1,1280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta name="description"
+    content="Vali is a responsive and free admin theme built with Bootstrap 4, SASS and PUG.js. It's fully customizable and modular.">
+  <!-- Twitter meta-->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:site" content="@pratikborsadiya">
+  <meta property="twitter:creator" content="@pratikborsadiya">
+  <!-- Open Graph Meta-->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Vali Admin">
+  <meta property="og:title" content="Vali - Free Bootstrap 4 admin theme">
+  <meta property="og:url" content="http://pratikborsadiya.in/blog/vali-admin">
+  <meta property="og:image" content="http://pratikborsadiya.in/blog/vali-admin/hero-social.png">
+  <meta property="og:description"
+    content="Vali is a responsive and free admin theme built with Bootstrap 4, SASS and PUG.js. It's fully customizable and modular.">
+  <title>GeoFly</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Main CSS-->
+  <link rel="stylesheet" type="text/css" href="css/main.css">
+  <link rel="stylesheet" type="text/css" href="css/main1.css">
+  <!-- Font-icon css-->
+  <link rel="stylesheet" type="text/css"
+    href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <meta charset="utf-8">
+
+  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+  <link href="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.css" rel="stylesheet">
+  <script src="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+
+
+</head>
+
+<body class="app sidebar-mini">
+  <!-- Navbar-->
+  <header class="app-header"><a class="app-header__logo" href="index.html">geofly</a>
+    <!-- Sidebar toggle button--><a class="app-sidebar__toggle" href="#" data-toggle="sidebar"
+      aria-label="Hide Sidebar"></a>
+    <!-- Navbar Right Menu-->
+    <ul class="app-nav">
+      <li class="app-search">
+        <input class="app-search__input" type="search" placeholder="Search">
+        <button class="app-search__button"><i class="fa fa-search"></i></button>
+      </li>
+      <!--Notification Menu-->
+      <li class="dropdown"><a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Show notifications"><i
+            class="fa fa-bell-o fa-lg"></i></a>
+        <ul class="app-notification dropdown-menu dropdown-menu-right">
+          <li class="app-notification__title">You have 4 new notifications.</li>
+
+
+
+          </div>
+          </div>
+          <li class="app-notification__footer"><a href="#">See all notifications.</a></li>
+        </ul>
+      </li>
+      <!-- User Menu-->
+      <li class="dropdown"><a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Open Profile Menu"><i
+            class="fa fa-user fa-lg"></i></a>
+        <ul class="dropdown-menu settings-menu dropdown-menu-right">
+          <li><a class="dropdown-item" href="page-user.html"><i class="fa fa-cog fa-lg"></i> Settings</a></li>
+          <li><a class="dropdown-item" href="page-user.html"><i class="fa fa-user fa-lg"></i> Profile</a></li>
+          <li><a class="dropdown-item" href="page-login.html"><i class="fa fa-sign-out fa-lg"></i> Logout</a></li>
+        </ul>
+      </li>
+    </ul>
+  </header>
+
+  <!-- Sidebar menu-->
+  <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
+  <aside class="app-sidebar">
+    <div class="app-sidebar__user"><img class="app-sidebar__user-avatar"
+        src="https://s3.amazonaws.com/uifaces/faces/twitter/jsa/48.jpg" alt="User Image">
+      <div>
+        <p class="app-sidebar__user-name">John Doe</p>
+        <p class="app-sidebar__user-designation">Frontend Developer</p>
+      </div>
+    </div>
+    <ul class="app-menu">
+      <li><a class="app-menu__item active" href="Homepage"><i class="app-menu__icon fa fa-dashboard"></i><span
+            class="app-menu__label">Dashboard</span></a></li>
+      <li class="treeview">
+        <a class="app-menu__item" href="Homepage1" data-toggle="treeview">
+          <i class="app-menu__icon fa fa-laptop"></i>
+          <span class="app-menu__label">Couches</span>
+          <i class="treeview-indicator fa fa-angle-right"></i>
+        </a>
+        <ul class="treeview-menu">
+          <li><span class="treeview-item" id="getgeojson"><i class="icon fa fa-circle-o"></i> POLYGONS</span></li>
+
+          <li><span class="treeview-item" id="rabat_hassane"><i class="icon fa fa-circle-o"></i> Rabat Hassane</span>
+          </li>
+          <li><span class="treeview-item" id="rabat_riyad"><i class="icon fa fa-circle-o"></i>Rabat Riyad </span></li>
+          <li><span class="treeview-item" id="sala_eljadida"><i class="icon fa fa-circle-o"></i>Sala ElJadida </span>
+          </li>
+          <li><span class="treeview-item" id="sale_medina"><i class="icon fa fa-circle-o"></i>Sale Medina </span></li>
+        </ul>
+      </li>
+      <li><a class="app-menu__item" href="charts"><i class="app-menu__icon fa fa-pie-chart"></i><span
+            class="app-menu__label">Charts</span></a></li>
+
+      <li class="treeview">
+        <a class="app-menu__item" href="login" data-toggle="treeview" id="page2">
+          <i class="app-menu__icon fa fa-laptop"></i>
+          <span class="app-menu__label">Mes cartes</span>
+          <i class="treeview-indicator fa fa-angle-right"></i>
+        </a>
+        <ul class="treeview-menu" id="cartes">
+          <div
+            style="background-color: rgba(87, 172, 215, 0.884); height: 30px; color: aliceblue; font-size:medium; text-align: center;">
+            satellite</div>
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8YhpvW38kjeq2xQJMV5Y5Qiq1B3M3x01T3pOi8QXspn4HWa1eM-INQsnRgo5YoSE4CCQ&usqp=CAU"
+            style="width: 350px; height: 140px;  float: inherit;" id="satellite-streets-v12" name="rtoggle"
+            value="satellite" checked="checked" />
+          <div
+            style="background-color: rgba(87, 172, 215, 0.884); height: 30px; color: aliceblue; font-size:medium; text-align: center;">
+            Light</div>
+          <img src="https://pretius.com/wp-content/uploads/2023/01/map_region_controls.png"
+            style="width: 390px; height: 140px; float: inherit;" id="light-v11" name="rtoggle" value="light" />
+          <div
+            style="background-color: rgba(87, 172, 215, 0.884); height: 30px; color: aliceblue; font-size:medium; text-align: center;">
+            Outdoors</div>
+          <img src="https://miro.medium.com/v2/resize:fit:1400/0*zi8fkmtGZpaWDrj_.jpg"
+            style="width: 300px; height: 140px; float: inherit;" id="outdoors-v12" name="rtoggle" value="outdoors" />
+          <div
+            style="background-color: rgba(87, 172, 215, 0.884); height: 30px; color: aliceblue; font-size:medium; text-align: center;">
+            Dark</div>
+          <img
+            src="data:image/jpeg;base64,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"
+            style="width: 350px; height: 140px; float: inherit;" id="dark-v11" name="rtoggle" value="dark" />
+          <div
+            style="background-color: rgba(87, 172, 215, 0.884); height: 30px; color: aliceblue; font-size:medium; text-align: center;">
+            Streets</div>
+          <img src="https://miro.medium.com/v2/resize:fit:1400/0*yPSQlTHRvLaIVBcG.jpg"
+            style="width: 300px; height: 140px; float: inherit;" id="streets-v12" name="rtoggle" value="streets" />
+
+        </ul>
+      </li>
+      <li class="treeview">
+        <a class="app-menu__item" href="login" data-toggle="treeview" id="page2">
+          <i class="app-menu__icon fa fa-laptop"></i>
+          <span class="app-menu__label">Mes Couches</span>
+          <i class="treeview-indicator fa fa-angle-right"></i>
+        </a>
+        <ul class="treeview-menu" id="my_layers">
+          <li><a class="treeview-item" style="color: white; font-size: 19px; "><i class="icon fa fa-circle-o"></i>test 1</a></li>
+
+
+
+
+
+        </ul>
+      </li>
+      <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i
+            class="app-menu__icon fa fa-th-list"></i><span class="app-menu__label">couches</span><i
+            class="treeview-indicator fa fa-angle-right"></i></a>
+        <ul class="treeview-menu">
+          <li><a class="treeview-item" href="#" id="couches"><i class="icon fa fa-circle-o"></i>lister</a></li>
+       
+          <li><a class="treeview-item" href="#" id="add"><i class="icon fa fa-circle-o"></i> Ajouter</a>
+          </li>
+        </ul>
+      </li>
+      <li class="treeview1"><a class="app-menu__item" href="#" data-toggle="treeview"><i
+            class="app-menu__icon fa fa-file-text"></i><span class="app-menu__label">Vos Couches</span><i
+            class="treeview1-indicator fa1 fa-angle1-right"></i></a>
+
+      </li>
+
+      <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i
+        class="app-menu__icon fa fa-th-list"></i><span class="app-menu__label">couches</span><i
+        class="treeview-indicator fa fa-angle-right"></i></a>
+    <ul class="treeview-menu">
+      <li><a class="treeview-item" href="#" id="renm"><i class="icon fa fa-circle-o"></i>
+          renommer</a></li>
+      <li><a class="treeview-item" href="#" id="delete"><i class="icon fa fa-circle-o"></i>
+          Supprimer</a></li>
+
+    </ul>
+  </aside>
+
+
+  <!DOCTYPE html>
+  <html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"
+      content="initial-scale=1,maximum-scale=1,user-scalable=no">
+    <title>Sidebar Menu</title>
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+
+  <body>
+    <nav>
+
+    </nav>
+    <main>
+
+
+      <style>
+        body {
+          margin: 0;
+          padding: 0;
+
+        }
+
+        #map {
+          position: absolute;
+          top: 50px;
+          bottom: 0;
+          width: 100%;
+        }
+      </style>
+
+      </head>
+
+      <body>
+        <style>
+          #btn-spin {
+            font: bold 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+            background-color: #10c065;
+            color: #fff;
+            position: absolute;
+            top: 20px;
+            left: 35%;
+            z-index: 1;
+            border: none;
+            width: 200px;
+            margin-left: -100px;
+            display: block;
+            cursor: pointer;
+            padding: 10px 20px;
+            border-radius: 3px;
+          }
+
+          #btn-spin:hover {
+            background-color: #43f160;
+          }
+
+          .calculation-box {
+
+            position: absolute;
+            bottom: 20px;
+            left: 10px;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 15px;
+            text-align: center;
+          }
+
+          p {
+            font-family: 'Open Sans';
+            margin: 0;
+            font-size: 13px;
+          }
+        </style>
+        <script src="https://unpkg.com/@turf/turf@6/turf.min.js"></script>
+        <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.4.0/mapbox-gl-draw.js"></script>
+        <link rel="stylesheet"
+          href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.4.0/mapbox-gl-draw.css" type="text/css">
+
+
+        <div class="modal" id="myModal"
+          style="position: absolute;z-index: 9999;left: 300px;display: none;background-color: rgba(38, 36, 36, 0.521);">
+          <div class="modal-content">
+            <h3 style="color: rgb(157, 223, 246);">Ajouter votre pacrelle a la base de donnees</h3>
+
+            <label> Nom de Propriétaire</label>
+            <input type="text" id="nameInput" name="nameInput">
+            <label> Mappe</label>
+            <input type="text" id="mappe" name="nmappe">
+            <label> Numero</label>
+            <input type="number" id="numero" name="numero">
+            <label> Type d'agriculture</label>
+            <input type="text" id="type" name="type">
+            <label> Nature</label>
+            <input type="text" id="nature" name="nature">
+            <label> indice</label>
+            <input type="text" id="indice" name="indice">
+            <label>complement</label>
+            <input type="text" id="complement" name="complement">
+            <label>Surface </label>
+            <input type="number" id="surface" name="surface">
+
+            <br>
+            <button type="submit" id="save_polygon">Save</button>
+            <button type="submit" id="cancel_polygon" style="background-color: rgb(130, 9, 33);">Cancel</button>
+
+          </div>
+
+        </div>
+        <div class="modal1" id="myModal1"
+          style="position: absolute;z-index: 9999;left: 300px;display: none;background-color: rgba(38, 36, 36, 0.521);">
+          <div class="modal1-content">
+            <h3 style="color: rgb(157, 223, 246);">Ajouter votre couche</h3>
+
+            <label> Nom de la couche</label>
+            <input type="text" id="name_couche" name="nameCouhe">
+
+
+            <br>
+            <button type="submit" id="save_couche">Save</button>
+            <button type="submit" id="cancel_couche" style="background-color: rgb(130, 9, 33);">Cancel</button>
+
+          </div>
+
+        </div>
+
+        <style>
+          #menu {
+
+            position: absolute;
+            top: 54px;
+            right: 16px;
+            font-size: 18px;
+            background: #efefef;
+            padding: 10px;
+            font-family: 'Open Sans', sans-serif;
+          }
+
+          .modal-content {
+            background: transparent;
+          }
+
+          .modal {
+
+            margin: auto auto;
+            padding: 40px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px #000;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            width: 700px;
+            height: 1000px;
+          }
+
+          .modal input {
+
+            padding: 10px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #f2f2f2;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+          }
+
+          .modal label {
+            display: block;
+            margin-bottom: 10px;
+            color: #fff;
+          }
+
+
+
+          .modal button {
+            padding: 10px 20px 10px 10px;
+            margin-bottom: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: #fff;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+          }
+
+          .popup-table {
+            font-size: 14px;
+            border-collapse: collapse;
+            width: 100px;
+          }
+
+          .popup-table th {
+            text-align: left;
+            padding: 4px;
+          }
+
+          .popup-table td {
+            padding: 4px;
+            border-top: 1px solid #ccc;
+          }
+
+          .popup-table td:first-child {
+            width: 100px;
+            font-weight: bold;
+          }
+
+          #menu {
+
+            position: absolute;
+            top: 54px;
+            right: 16px;
+            font-size: 18px;
+            background: #efefef;
+            padding: 10px;
+            font-family: 'Open Sans', sans-serif;
+          }
+
+          .modal1-content {
+            background: transparent;
+          }
+
+          .modal1 {
+
+            margin: auto auto;
+            padding: 40px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px #000;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            width: 500px;
+            height: 300px;
+          }
+
+          .modal1 input {
+
+            padding: 10px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #f2f2f2;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+          }
+
+          .modal1 label {
+            display: block;
+            margin-bottom: 10px;
+            color: #fff;
+          }
+
+
+
+          .modal1 button {
+            padding: 10px 20px 10px 10px;
+            margin-bottom: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: #fff;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+          }
+        </style>
+
+        <div id="map"></div>
+
+        <div id="directions"></div>
+        <script>
+          mapboxgl.accessToken = 'pk.eyJ1IjoiZ2VvbWZsZWkiLCJhIjoiY2pyeTVxajVwMHMycjQ0bTFkam10dGFobCJ9.9_GhakivE2CB-s-eK4HVSA';
+          const map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/satellite-v9',
+            projection: 'globe', // Display the map as a globe, since satellite-v9 defaults to Mercator
+            zoom: 1.5,
+            center: [-90, 40]
+
+          });
+          // Add zoom and rotation controls to the map.
+          map.addControl(new mapboxgl.NavigationControl(), 'top-left');
+          const layerList = document.getElementById('cartes');
+          const inputs = layerList.getElementsByTagName('img');
+
+          for (const input of inputs) {
+            input.onclick = (layer) => {
+              const layerId = layer.target.id;
+              map.setStyle('mapbox://styles/mapbox/' + layerId);
+            };
+          }
+          const draw = new MapboxDraw({
+            displayControlsDefault: true,
+            // Select which mapbox-gl-draw control buttons to add to the map.
+            controls: {
+              polygon: true,
+              trash: true
+            },
+            // Set mapbox-gl-draw to draw by default.
+            // The user does not have to click the polygon control button first.
+            defaultMode: 'draw_polygon'
+          });
+          map.addControl(draw, 'top-left');
+          map.on('draw.delete', updateArea);
+          map.on('draw.update', updateArea);
+
+          var modal1 = document.getElementById("myModal1");
+          var addcouche = document.getElementById("add");
+          var saveCouche = document.getElementById("save_couche")
+          var recent = localStorage.getItem('userId')
+          var cancelcouche = document.getElementById("cancel_couche")
+          console.log(recent)
+
+         /* $('#add').off().on('click' , () => {
+            modal1.style.display = "block";
+            let targetelment = ''
+              let data = {
+                name_couche: $('#name_couche').val(),
+                id_user: localStorage.getItem('userId')
+              }
+              $.ajax({
+                url: `${window.origin}/saveCouche`,
+                type: "POST",
+                data: data,
+                success: function (response) {
+                  console.log('success send', response);
+                },
+                error: function () {
+                  alert("error");
+                }
+              });
+              modal1.style.display = "none";
+          })*/
+          addcouche.onclick = function () {
+           modal1.style.display = "block";
+           var targetelment = ''
+            $('#save_couche').off().on('click', () => {
+               console.log('hello world');
+              let data = {
+                name_couche: $('#name_couche').val(),
+                id_user: localStorage.getItem('userId')
+              }
+              $.ajax({
+                url: `${window.origin}/saveCouche`,
+                type: "POST",
+                data: data,
+               success: function (response) {
+                  console.log('success send', response);
+               },
+               error: function () {
+                 alert("error");
+              }
+             });
+              modal1.style.display = "none";
+            })
+             cancelcouche.onclick = function () { modal1.style.display = "none"; }
+           }
+
+
+
+
+
+
+
+
+          var modal = document.getElementById("myModal");
+          var saveDataInpolygon = document.getElementById("save_polygon");
+          var cancelDatapolygon = document.getElementById("cancel_polygon")
+          var inputName = document.getElementById("nameInput");
+          var inputMappe = document.getElementById("mappe");
+          var inputNumero = document.getElementById("numero");
+          var inputType = document.getElementById("type");
+          var inputNature = document.getElementById("nature");
+          var inputIndice = document.getElementById("indice");
+          var inputComplemnt = document.getElementById("complement");
+          var inputSurface = document.getElementById("surface");
+
+          map.on('draw.create', function (event) {
+            var feature = event.features[0];
+            if (feature.geometry.type === 'Polygon') {
+              console.log(feature);
+              modal.style.display = "block";
+              saveDataInpolygon.onclick = function () {
+                var polygonCoordinates = feature.geometry.coordinates;
+                console.log(polygonCoordinates);
+                draw.add(feature);
+                feature.properties.name = inputName.value;
+                feature.properties.mappe = inputMappe.value;
+                feature.properties.numero = inputNumero.value;
+                feature.properties.type = inputType.value;
+                feature.properties.nature = inputNature.value;
+                feature.properties.indice = inputIndice.value;
+                feature.properties.complement = inputComplemnt.value;
+                feature.properties.surface = inputSurface.value;
+
+                var name = feature.properties.name;
+                var mappe = feature.properties.mappe;
+                var numero = feature.properties.numero;
+                var type = feature.properties.type;
+                var nature = feature.properties.nature;
+                var indice = feature.properties.indice;
+                var complement = feature.properties.complement;
+                var surface = feature.properties.surface;
+
+                draw.add(feature);
+                inputName.value = '';
+                inputMappe.value = '';
+                inputNumero.value = '';
+                inputType.value = '';
+                inputNature.value = '';
+                inputIndice.value = '';
+                inputComplemnt.value = '';
+                inputComplemnt.value = '';
+                modal.style.display = "none";
+                var polygonCoordinates = polygonCoordinates;
+                console.log('les coodonees sont :', polygonCoordinates);
+                polygonProperties = { name: name, mappe: mappe, numero: numero, type: type, nature: nature, indice: indice, complement: complement, surface: surface };
+
+                console.log(polygonProperties);
+
+                const datas = {
+                  coordinates: polygonCoordinates,
+                  properties: polygonProperties
+                };
+
+                $.ajax({
+                  url: `/savePolygon`,
+                  type: "POST",
+                  contentType: 'application/json',
+                  data: JSON.stringify(datas),
+                  success: function (res) {
+                    console.log('Polygon saved successfully:', res);
+                  },
+                  error: function (err) {
+                    console.error('Error saving polygon:', err);
+                  }
+                });
+              }
+
+
+              cancelDatapolygon.onclick = function () { modal.style.display = "none"; }
+
+
+            }
+
+          });
+
+          map.on('draw.create', function (event) {
+            var feature = event.features[0];
+            if (feature.geometry.type === 'Point') {
+              var pointsCoordinates = feature.geometry.coordinates;
+              console.log(pointsCoordinates);
+
+            }
+          });
+
+
+          map.on('draw.create', function (event) {
+            var feature = event.features[0];
+            if (feature.geometry.type === 'LineString') {
+              var lineCoordinates = feature.geometry.coordinates;
+              console.log(lineCoordinates);
+
+            }
+          });
+
+          var displaycouches = document.getElementById("couches");
+          var menuOpened = false; // Flag variable to track the menu state
+
+          displaycouches.onclick = function () {
+            if (!menuOpened) {
+              // Send the data to the server
+              var data = getUserId(); // Call a function to retrieve the user ID
+              console.log('DATA:', data);
+              $.ajax({
+                url: `${window.origin}/couchesdata`,
+                type: "POST",
+                data: { data: data }, // Pass the data as an object with the key "data"
+                success: function (response) {
+                  console.log('Success:', response);
+                  // Open the menu only if the server request was successful
+                  openMenu(response.data);
+                },
+                error: function () {
+                  alert("Error");
+                }
+              });
+            } else {
+              // Close the menu
+              closeMenu();
+            }
+          };
+
+          function openMenu(data) {
+            var treeviewElement = document.querySelector('.treeview1');
+            var menuItems = []; // Array to store the created menu items
+
+            // Loop through the data and add it to the treeview element
+            for (var i = 0; i < data.length; i++) {
+              var name = data[i].name_couche;
+
+              var aElement = document.createElement('a');
+              aElement.classList.add('app-menu__item1');
+              aElement.href = '#';
+              aElement.setAttribute('data-toggle1', 'treeview1');
+
+              var spanElement = document.createElement('span');
+              spanElement.classList.add('app-menu__label1');
+              spanElement.textContent = name;
+
+              aElement.appendChild(spanElement);
+
+              treeviewElement.appendChild(aElement);
+
+              // Store the created menu item in the list
+              menuItems.push(aElement);
+            }
+
+            // Add click event listeners to each menu item
+            menuItems.forEach(function (menuItem) {
+              menuItem.addEventListener('click', function () {
+              
+                var deleteouche= document.getElementById('delete')
+                 deleteouche.onclick=function(){
+                  var data = getUserId(); // Call a function to retrieve the user ID
+              console.log('DATA:', data);
+              $.ajax({
+                url: `${window.origin}/deletecouches`,
+                type: "POST",
+                data: { data: data }, // Pass the data as an object with the key "data"
+                success: function (response) {
+                  console.log('Success:', response);
+                  // Open the menu only if the server request was successful
+                  openMenu(response.data);
+                },
+                error: function () {
+                  alert("not deleted");
+                }
+              });
+                 }
+                
+              });
+            });
+
+            // Update the flag variable to indicate that the menu is opened
+            menuOpened = true;
+          }
+
+
+          function closeMenu() {
+            var treeviewElement = document.querySelector('.treeview1');
+            treeviewElement.innerHTML = ''; // Clear the contents of the menu
+
+            // Update the flag variable to indicate that the menu is closed
+            menuOpened = false;
+          }
+
+          function getUserId() {
+            return localStorage.getItem("userId");
+
+            ;
+          }
+
+
+
+
+
+
+
+
+          // Imorter les Polygones dessinees
+          var displayGeojsonData = document.getElementById("getgeojson");
+          displayGeojsonData.onclick = function () {
+            if (map.getSource('parcels')) {
+              console.log('source already exists')
+              map.removeLayer('layer');
+              map.removeSource('parcels');
+            }
+            $.ajax({
+              url: `${window.origin}/GeoJsondata`,
+              type: "GET",
+              contentType: 'application/json',
+              success: function (data) {
+                console.log(data)
+                var geojsonData = {
+                  type: "FeatureCollection",
+                  features: data.data
+                };
+                if (!map.getSource('parcels')) {
+                  map.addSource('parcels', {
+                    type: 'geojson',
+                    data: geojsonData
+                  });
+                  map.addLayer({
+                    id: 'layer',
+                    type: 'fill',
+                    source: 'parcels',
+                    paint: {
+                      "fill-color": "#db6e8f",
+                      //'fill-color': '#088'
+
+                      'fill-opacity': 0.8,
+                      'fill-outline-color': 'rgba(60, 100, 20, 100)'
+                    }
+                  });
+                }
+              },
+              error: function () {
+                alert('Error');
+              }
+            });
+            map.on('click', 'layer', function (e) {
+              new mapboxgl.Popup()
+                .setLngLat(e.lngLat)
+                .setHTML(e.features[0].properties.name)
+                .addTo(map);
+            });
+          };
+          //Importer les couchesde RabatHassane
+          var displayGeojsonDataRabat = document.getElementById("rabat_hassane");
+          displayGeojsonDataRabat.onclick = function () {
+            if (map.getSource('maine')) {
+              map.removeLayer('maine');
+              map.removeSource('maine');
+            }
+            $.ajax({
+              url: `${window.origin}/GeoJsondataRabatHassane`,
+              type: "GET",
+              contentType: 'application/json',
+              success: function (data) {
+                //console.log('all datas :..........test', data)
+                var geojsonDatarabat = {
+                  type: "FeatureCollection",
+                  features: data.data
+                };
+                var extent = turf.bbox(geojsonDatarabat);
+                //console.log(extent)
+                map.fitBounds(extent, { padding: 20 });
+
+                map.addSource('maine', {
+                  'type': 'geojson',
+                  'data': geojsonDatarabat
+                });
+
+                // Add a new layer to visualize the polygon.
+                map.addLayer({
+                  'id': 'maine',
+                  'type': 'fill',
+                  'source': 'maine', // reference the data source
+                  'layout': {},
+                  'paint': {
+                    'fill-color': '#F90981 ', // blue color fill
+                    'fill-opacity': 0.5
+                  }
+                });
+                // Add a black outline around the polygon.
+                map.addLayer({
+                  'id': 'outline',
+                  'type': 'line',
+                  'source': 'maine',
+                  'layout': {},
+                  'paint': {
+                    'line-color': '#000',
+                    'line-width': 3
+                  }
+                });
+                /* map.on('click', 'maine', function (e) {
+                   new mapboxgl.Popup()
+                     .setLngLat(e.lngLat)
+                     .setHTML("<p></p>"
+                       + e.features[0].properties.mappe + "</p>"
+                       + e.features[0].properties.nature +
+                       "</p>Date: " + e.features[0].properties.num +
+                       "</p>Location: " + e.features[0].properties.indice +
+                       "</p>Cause: " + e.features[0].properties.complement +
+                       "</p>Location: " + e.features[0].properties.type +
+                       "</p>")
+                     .addTo(map);*/
+                map.on('click', 'maine', function (e) {
+                  // Create a table element with a class for styling
+                  const table = document.createElement('table');
+                  table.classList.add('popup-table');
+
+                  // Add a row for each data point
+                  ['mappe', 'nature', 'num', 'indice', 'complement', 'type'].forEach(key => {
+                    const row = table.insertRow();
+                    const labelCell = row.insertCell();
+                    const valueCell = row.insertCell();
+
+                    labelCell.textContent = `${key.charAt(0).toUpperCase()}${key.slice(1)}:`;
+                    valueCell.textContent = e.features[0].properties[key];
+                  });
+
+                  // Create a popup and set the table as its content
+                  new mapboxgl.Popup()
+                    .setLngLat(e.lngLat)
+                    .setDOMContent(table)
+                    .addTo(map);
+                  var sourceId = "maine";
+                  var featureId = e.features[0].properties.id;
+
+                  var features = map.querySourceFeatures(sourceId, {
+                    filter: ["==", "id", featureId]
+                  });
+
+                  if (features.length > 0) {
+                    var geometry = features[0].geometry;
+                    console.log('safaaaaae')
+                    console.log(geometry)
+                    var extent = turf.bbox(geometry);
+                    map.fitBounds(extent, { padding: 5 });
+                  } else {
+                    console.error("Feature with ID " + featureId + " not found.");
+                  }
+
+                });
+
+              },
+              error: function () {
+                alert('Error');
+              }
+
+            });
+          };
+          //Importer les couchesde RabatRiyad
+          var displayGeojsonDataRabatr = document.getElementById("rabat_riyad");
+          displayGeojsonDataRabatr.onclick = function () {
+            if (map.getSource('mainee')) {
+              map.removeLayer('mainee');
+              map.removeSource('mainee');
+            }
+            $.ajax({
+              url: `${window.origin}/GeoJsondataRabatRiyad`,
+              type: "GET",
+              contentType: 'application/json',
+              success: function (data) {
+                //console.log('all datas :..........test', data)
+                var geojsonDatarabatR = {
+                  type: "FeatureCollection",
+                  features: data.data
+                };
+                var extent = turf.bbox(geojsonDatarabatR);
+                //console.log(extent)
+                map.fitBounds(extent, { padding: 20 });
+
+                map.addSource('mainee', {
+                  'type': 'geojson',
+                  'data': geojsonDatarabatR
+                });
+
+                // Add a new layer to visualize the polygon.
+                map.addLayer({
+                  'id': 'mainee',
+                  'type': 'fill',
+                  'source': 'mainee', // reference the data source
+                  'layout': {},
+                  'paint': {
+                    'fill-color': '#1FF0BE ', // blue color fill
+                    'fill-opacity': 0.5
+                  }
+                });
+                // Add a black outline around the polygon.
+                map.addLayer({
+                  'id': 'outlinee',
+                  'type': 'line',
+                  'source': 'mainee',
+                  'layout': {},
+                  'paint': {
+                    'line-color': '#000',
+                    'line-width': 3
+                  }
+                });
+                map.on('click', 'maine', function (e) {
+                  // Create a table element with a class for styling
+                  const table = document.createElement('table');
+                  table.classList.add('popup-table');
+
+                  // Add a row for each data point
+                  ['mappe', 'nature', 'num', 'indice', 'complement', 'type'].forEach(key => {
+                    const row = table.insertRow();
+                    const labelCell = row.insertCell();
+                    const valueCell = row.insertCell();
+
+                    labelCell.textContent = `${key.charAt(0).toUpperCase()}${key.slice(1)}:`;
+                    valueCell.textContent = e.features[0].properties[key];
+                  });
+
+                  // Create a popup and set the table as its content
+                  new mapboxgl.Popup()
+                    .setLngLat(e.lngLat)
+                    .setDOMContent(table)
+                    .addTo(map);
+                  var sourceId = "mainee";
+                  var featureId = e.features[0].properties.id;
+
+                  var features = map.querySourceFeatures(sourceId, {
+                    filter: ["==", "id", featureId]
+                  });
+
+                  if (features.length > 0) {
+                    var geometry = features[0].geometry;
+                    console.log('safaaaaae')
+                    console.log(geometry)
+                    var extent = turf.bbox(geometry);
+                    map.fitBounds(extent, { padding: 20 });
+                  } else {
+                    console.error("Feature with ID " + featureId + " not found.");
+                  }
+
+                });
+
+              },
+              error: function () {
+                alert('Error');
+              }
+
+            });
+          };
+          //Importer les couchesde SalaEljadida
+          var displayGeojsonDataRabats = document.getElementById("sala_eljadida");
+          displayGeojsonDataRabats.onclick = function () {
+            if (map.getSource('maine')) {
+              map.removeLayer('maine');
+              map.removeSource('maine');
+            }
+            $.ajax({
+              url: `${window.origin}/GeoJsondataSalaEljadida`,
+              type: "GET",
+              contentType: 'application/json',
+              success: function (data) {
+                //console.log('all datas :..........test', data)
+                var geojsonDatarabatS = {
+                  type: "FeatureCollection",
+                  features: data.data
+                };
+                console.log('DDDAAAATTTAAAAA::::::::', geojsonDatarabatS)
+                var extent = turf.bbox(geojsonDatarabatS);
+                //console.log(extent)
+                map.fitBounds(extent, { padding: 40 });
+
+                map.addSource('maine', {
+                  'type': 'geojson',
+                  'data': geojsonDatarabatS
+                });
+
+                // Add a new layer to visualize the polygon.
+                map.addLayer({
+                  'id': 'maine',
+                  'type': 'fill',
+                  'source': 'maine', // reference the data source
+                  'layout': {},
+                  'paint': {
+                    'fill-color': '#B61394 ', // blue color fill
+                    'fill-opacity': 0.5
+                  }
+                });
+                // Add a black outline around the polygon.
+                map.addLayer({
+                  'id': 'outline',
+                  'type': 'line',
+                  'source': 'maine',
+                  'layout': {},
+                  'paint': {
+                    'line-color': '#000',
+                    'line-width': 3
+                  }
+                });
+                map.on('click', 'maine', function (e) {
+                  // Create a table element with a class for styling
+                  const table = document.createElement('table');
+                  table.classList.add('popup-table');
+
+                  // Add a row for each data point
+                  ['mappe', 'nature', 'num', 'indice', 'complement', 'type'].forEach(key => {
+                    const row = table.insertRow();
+                    const labelCell = row.insertCell();
+                    const valueCell = row.insertCell();
+
+                    labelCell.textContent = `${key.charAt(0).toUpperCase()}${key.slice(1)}:`;
+                    valueCell.textContent = e.features[0].properties[key];
+                  });
+
+                  // Create a popup and set the table as its content
+                  new mapboxgl.Popup()
+                    .setLngLat(e.lngLat)
+                    .setDOMContent(table)
+                    .addTo(map);
+
+
+
+
+                  var sourceId = "maine";
+                  var featureId = e.features[0].properties.id;
+
+                  var features = map.querySourceFeatures(sourceId, {
+                    filter: ["==", "id", featureId]
+                  });
+
+
+                  var geometry = features[0].geometry;
+                  console.log(geometry)
+                  var extent = turf.bbox(geometry);
+                  map.fitBounds(extent, { padding: 10 });
+
+
+                });
+
+              },
+              error: function () {
+                console.log('hhhhhhhhhhhhhhhhhhhhhhhhhh');
+              }
+
+            });
+          };
+          function updateArea(e) {
+            const data = draw.getAll();
+            const answer = document.getElementById('directions');
+            if (data.features.length > 0) {
+              const area = turf.area(data);
+              // Restrict the area to 2 decimal points.
+              const rounded_area = Math.round(area * 100) / 100;
+              answer.innerHTML = `<p><strong>${rounded_area}</strong></p><p>square meters</p>`;
+            } else {
+              answer.innerHTML = '';
+              if (e.type !== 'draw.delete')
+                alert('Click the map to draw a polygon.');
+            }
+          }
+
+
+
+          // Add the draw tool to the map.
+          map.on('style.load', () => {
+            map.setFog({}); // Set the default atmosphere style
+          });
+
+          // The following values can be changed to control rotation speed:
+
+          // At low zooms, complete a revolution every two minutes.
+          const secondsPerRevolution = 120;
+          // Above zoom level 5, do not rotate.
+          const maxSpinZoom = 1;
+          // Rotate at intermediate speeds between zoom levels 3 and 5.
+          const slowSpinZoom = 3;
+
+          let userInteracting = false;
+          let spinEnabled = true;
+
+          function spinGlobe() {
+            const zoom = map.getZoom();
+            if (spinEnabled && !userInteracting && zoom < maxSpinZoom) {
+              let distancePerSecond = 360 / secondsPerRevolution;
+              if (zoom > slowSpinZoom) {
+                // Slow spinning at higher zooms
+                const zoomDif =
+                  (maxSpinZoom - zoom) / (maxSpinZoom - slowSpinZoom);
+                distancePerSecond *= zoomDif;
+              }
+              const center = map.getCenter();
+              center.lng -= distancePerSecond;
+              // Smoothly animate the map over one second.
+              // When this animation is complete, it calls a 'moveend' event.
+              map.easeTo({ center, duration: 1000, easing: (n) => n });
+            }
+          }
+
+          // Pause spinning on interaction
+          map.on('mousedown', () => {
+            userInteracting = true;
+          });
+
+          // Restart spinning the globe when interaction is complete
+          map.on('mouseup', () => {
+            userInteracting = false;
+            spinGlobe();
+          });
+
+          // These events account for cases where the mouse has moved
+          // off the map, so 'mouseup' will not be fired.
+          map.on('dragend', () => {
+            userInteracting = false;
+            spinGlobe();
+          });
+          map.on('pitchend', () => {
+            userInteracting = false;
+            spinGlobe();
+          });
+          map.on('rotateend', () => {
+            userInteracting = false;
+            spinGlobe();
+          });
+
+          // When animation is complete, start spinning if there is no ongoing interaction
+          map.on('moveend', () => {
+            spinGlobe();
+          });
+
+
+          spinGlobe();
+
+        </script>
+
+      </body>
+    </main>
+
+    <script src="js/app.js"></script>
+  </body>
+
+  </html>
+
+  <!-- Essential javascripts for application to work-->
+  <script src="js/jquery-3.3.1.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/main.js"></script>
+  <!-- The javascript plugin to display page loading on top-->
+  <script src="js/plugins/pace.min.js"></script>
+  <!-- Page specific javascripts-->
+  <script type="text/javascript" src="js/plugins/chart.js"></script>
+  <script type="text/javascript">
+    var data = {
+      labels: ["January", "February", "March", "April", "May"],
+      datasets: [
+        {
+          label: "My First dataset",
+          fillColor: "rgba(220,220,220,0.2)",
+          strokeColor: "rgba(220,220,220,1)",
+          pointColor: "rgba(220,220,220,1)",
+          pointStrokeColor: "#fff",
+          pointHighlightFill: "#fff",
+          pointHighlightStroke: "rgba(220,220,220,1)",
+          data: [65, 59, 80, 81, 56]
+        },
+        {
+          label: "My Second dataset",
+          fillColor: "rgba(151,187,205,0.2)",
+          strokeColor: "rgba(151,187,205,1)",
+          pointColor: "rgba(151,187,205,1)",
+          pointStrokeColor: "#fff",
+          pointHighlightFill: "#fff",
+          pointHighlightStroke: "rgba(151,187,205,1)",
+          data: [28, 48, 40, 19, 86]
+        }
+      ]
+    };
+    var pdata = [
+      {
+        value: 300,
+        color: "#46BFBD",
+        highlight: "#5AD3D1",
+        label: "Complete"
+      },
+      {
+        value: 50,
+        color: "#F7464A",
+        highlight: "#FF5A5E",
+        label: "In-Progress"
+      }
+    ]
+
+    // var ctxl = $("#lineChartDemo").get(0).getContext("2d");
+    // var lineChart = new Chart(ctxl).Line(data);
+
+    // var ctxp = $("#pieChartDemo").get(0).getContext("2d");
+    // var pieChart = new Chart(ctxp).Pie(pdata);
+  </script>
+  <!-- Google analytics script-->
+  <script type="text/javascript">
+    if (document.location.hostname == 'pratikborsadiya.in') {
+      (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+          (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+          m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+      })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+      ga('create', 'UA-72504830-1', 'auto');
+      ga('send', 'pageview');
+    }
+
+  </script>
+</body>
+
+</html>

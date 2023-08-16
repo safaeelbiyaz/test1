@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+   <link rel="stylesheet" href="css/login.css">
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="body-content">
+
+        <div class="container">
+            <div class="logo">
+                <img src="/css/LogoGeoflyEtude.png"alt="Company Logo" srcset="">
+            </div>
+            <div class="login-form">
+                <form action="">
+                    <div class="form-item">
+                        <!-- <label for="userName">Username:</label> -->
+                        <input type="text" name="userName" id="userName" placeholder="Entrer Votre Email">
+                    </div>
+                    <div class="form-item">
+                        <!-- <label for="passWord">Password:</label> -->
+                        <input type="password" name="passWord" id="passWord" placeholder=" Entrer Password">
+                    </div>
+
+                    <div class="form-btns">
+
+                        <button type="submit" id="login_btn">Login</button>
+                        <div class="options">
+                            <a href="/register" style="color: rgb(53, 14, 90);">Sign Up</a>
+                            
+                        </div>
+
+                        <p>Copyright &copy; GEOFLY Etudes.com</p>
+                    </div>
+                </form>
+                
+            </div>
+        </div>
+    </div>
+
+
+
+</body>
+
+</html>
+<script>
+   /* $('#login_btn').off().on('click' , ()=> {
+      console.log('hello world');
+      let data_login= {
+              email:$('#email').val(),
+              password:$('#password').val()
+          }
+          $.ajax({
+          url: `${window.origin}/loginUser`,
+          type: 'POST',    
+          data: data_login,
+          success: function(response) {
+              console.log('success send',response);
+          },
+          error: function() {
+              console.log("error");
+          }    
+      }); 
+  
+          console.log(data_login);
+      })
+    */
+  </script>
+  
