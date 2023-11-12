@@ -3,18 +3,18 @@
   command = "npm run build"
 
   # Set the publish directory (where the build output is located)
-  publish = "dist" # Change 'dist' to the actual directory where your build output is
+  publish = "nodejs-passport-postgresql" # Change 'dist' to the actual directory where your build output is
 
 [context.production]
   command = "npm run build"
-  publish = "dist" # Change 'dist' to the actual directory where your build output is
+  publish = "nodejs-passport-postgresql" # Change 'dist' to the actual directory where your build output is
 
 [context.deploy-preview]
   command = "npm run build"
-  publish = "dist" # Change 'dist' to the actual directory where your build output is
+  publish = "nodejs-passport-postgresql" # Change 'dist' to the actual directory where your build output is
 
 [context.branch-deploy]
   command = "npm run build"
-  publish = "dist" # Change 'dist' to the actual directory where your build output is
+  publish = "nodejs-passport-postgresql" # Change 'dist' to the actual directory where your build output is
 
 # Additional settings can be added as needed
